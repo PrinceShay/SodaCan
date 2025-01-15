@@ -24,7 +24,7 @@ function Lights() {
       <directionalLight position={[-400, -50, 50]} intensity={1} />
       <directionalLight position={[0, 20, -30]} intensity={1} />
       <directionalLight
-        position={[-40, 200, -100]}
+        position={[-80, 200, -100]}
         color={"green"}
         intensity={50}
       />

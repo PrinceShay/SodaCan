@@ -1,5 +1,5 @@
-import { useCubeTexture, useGLTF } from "@react-three/drei";
-import { useRef, useEffect } from "react";
+import { useGLTF } from "@react-three/drei";
+import { useRef } from "react";
 import { Group } from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -9,8 +9,6 @@ useGLTF.preload("/hoodieglb.glb");
 export default function Model() {
   const group = useRef<Group>(null); // Reference to the group containing the model
   const { scene } = useGLTF("/can.glb");
-
-  useEffect(() => {}, []);
 
   useGSAP(() => {
     if (group.current) {
