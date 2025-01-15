@@ -4,11 +4,17 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import Model from "./Model";
 import { Suspense, useRef } from "react";
 import { useProgress, Html, OrbitControls } from "@react-three/drei";
+import { Loader2 } from "lucide-react";
 
 // Loader-Komponente für den Ladefortschritt
 function Loader() {
   const { progress } = useProgress();
-  return <Html center>{progress.toFixed(1)} % loaded</Html>;
+  return (
+    <Html center className="text-white">
+      <Loader2 color="limeGreen" size={64} className="animate-spin" />
+      {/* {progress.toFixed(1)} % */}
+    </Html>
+  );
 }
 
 function Lights() {
@@ -17,6 +23,11 @@ function Lights() {
       <directionalLight position={[400, 50, 50]} intensity={1} />
       <directionalLight position={[-400, -50, 50]} intensity={1} />
       <directionalLight position={[0, 20, -30]} intensity={1} />
+      <directionalLight
+        position={[-40, 200, -100]}
+        color={"green"}
+        intensity={50}
+      />
       <ambientLight intensity={1} />
     </>
   );
