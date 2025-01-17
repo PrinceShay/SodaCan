@@ -4,7 +4,7 @@ import { Group } from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-useGLTF.preload("/hoodieglb.glb");
+useGLTF.preload("/can.glb");
 
 export default function Model() {
   const group = useRef<Group>(null); // Reference to the group containing the model
@@ -13,6 +13,8 @@ export default function Model() {
   useGSAP(() => {
     if (group.current) {
       group.current.rotation.y = Math.PI / 0.675; // Set the rotation directly
+      
+      group.current.position.y = -10;
     }
 
     // Animate the Y rotation of the model using GSAP

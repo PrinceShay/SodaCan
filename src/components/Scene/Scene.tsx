@@ -39,7 +39,7 @@ export default function Scene() {
     <Canvas
       gl={{ antialias: true }}
       dpr={[1, 2]}
-      camera={{ position: [0, 0, -20] }}
+      camera={{ position: [0, 0, -17] }}
       className="absolute h-svh"
     >
       <Lights />

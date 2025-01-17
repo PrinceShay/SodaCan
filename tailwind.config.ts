@@ -52,9 +52,9 @@ const config: Config = {
   			}
   		},
   		fontFamily: {
-  			mono: [
-  				'var(--font-SpaceMono)'
-  			]
+			saphifen: ["var(--font-saphifen)"],
+			bebasNeue: ["var(--font-bebasNeue)"]
+
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

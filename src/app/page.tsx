@@ -1,3 +1,4 @@
+import Hero from "@/components/hero/Hero";
 import LogoGlow from "@/components/LogoGlow";
 import Scene from "@/components/Scene/Scene";
 
@@ -7,9 +8,10 @@ export default function Home() {
       <div className="fixed top-0 w-full md:z-20 h-screen pointer-events-none ">
         <Scene />
       </div>
-      <div className="w-full h-screen flex items-center justify-center">
-        <LogoGlow />
-      </div>
+     <Hero/>
+     <section className="min-h-screen">
+      hello
+     </section>
     </main>
   );
 }
