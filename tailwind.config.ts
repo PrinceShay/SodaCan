@@ -51,11 +51,12 @@ const config: Config = {
   				'5': 'hsl(var(--chart-5))'
   			}
   		},
-  		fontFamily: {
+		  fontFamily: {
 			saphifen: ["var(--font-saphifen)"],
-			bebasNeue: ["var(--font-bebasNeue)"]
-
-  		},
+			bebasNeue: ["var(--font-bebasNeue)"],
+		  },
+		  
+		  
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

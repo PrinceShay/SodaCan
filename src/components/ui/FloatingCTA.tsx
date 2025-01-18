@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import PrimaryButton from "./PrimaryButton";
 
 export default function FloatingCTA() {
   return (
-    <div className='fixed w-full bottom-0 pointer-events-none flex justify-end p-12'><div className='p-3 bg-green-600 text-2xl'>Unleash the Beast</div></div>
-  )
+    <div className="fixed z-40 w-full bottom-0 pointer-events-none flex justify-end p-12">
+      <PrimaryButton />
+    </div>
+  );
 }

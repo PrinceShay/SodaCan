@@ -3,7 +3,13 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import Model from "./Model";
 import { Suspense, useRef } from "react";
-import { useProgress, Html, OrbitControls } from "@react-three/drei";
+import {
+  useProgress,
+  Html,
+  OrbitControls,
+  Grid,
+  Backdrop,
+} from "@react-three/drei";
 import { Loader2 } from "lucide-react";
 
 // Loader-Komponente für den Ladefortschritt
@@ -39,25 +45,13 @@ export default function Scene() {
     <Canvas
       gl={{ antialias: true }}
       dpr={[1, 2]}
-      camera={{ position: [0, 0, -17] }}
-      className="absolute h-svh"
+      camera={{ position: [0, 0, -20] }}
     >
       <Lights />
       {/* Model und Ladeindikator */}
       <Suspense fallback={<Loader />}>
         <Model />
       </Suspense>
-
-      {/* Orbit Controls */}
-      {/* <OrbitControls
-        enableZoom={false}
-        autoRotate={true}
-        autoRotateSpeed={3}
-        enablePan={false}
-        dampingFactor={0.05}
-        minPolarAngle={Math.PI / 3} // Eingeschränkter Blickwinkel
-        maxPolarAngle={Math.PI / 1.5}
-      /> */}
     </Canvas>
   );
 }
