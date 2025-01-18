@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/next";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import Navbar from "@/components/ui/Navbar";
+import Loader from "@/components/ui/Loader";
 
 export const metadata: Metadata = {
   title: "Unleash the Beast | MONSTER Energy",
@@ -37,6 +38,7 @@ export default function RootLayout({
         className={`${saphifen.variable} ${bebasNeue.variable} antialiased bg-[#0C1110] text-white`}
       >
         <GrainBackground />
+        {/* <Loader /> */}
         <Navbar />
         {children}
         <FloatingCTA />

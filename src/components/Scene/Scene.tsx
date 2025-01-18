@@ -42,10 +42,11 @@ function Lights() {
 // Hauptszene
 export default function Scene() {
   return (
+    <div className="fixed w-full h-screen z-20">
     <Canvas
       gl={{ antialias: true }}
       dpr={[1, 2]}
-      camera={{ position: [0, 0, -20] }}
+      camera={{ position: [0, 0, -20] ,fov:60}}
     >
       <Lights />
       {/* Model und Ladeindikator */}
@@ -53,5 +54,6 @@ export default function Scene() {
         <Model />
       </Suspense>
     </Canvas>
+    </div>
   );
 }
