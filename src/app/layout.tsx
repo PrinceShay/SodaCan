@@ -38,9 +38,8 @@ export default function RootLayout({
         className={`${saphifen.variable} ${bebasNeue.variable} antialiased bg-[#0C1110] text-white`}
       >
         <GrainBackground />
-        {/* <Loader /> */}
         <Navbar />
-        {children}
+        <Lenis>{children}</Lenis>
         <FloatingCTA />
       </body>
     </html>

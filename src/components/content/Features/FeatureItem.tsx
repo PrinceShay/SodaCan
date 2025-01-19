@@ -99,7 +99,7 @@ export default function FeatureItem({
     <div
       id={id}
       ref={featureRef} // Attach the ref to this element
-      className={`h-[75vh] w-full flex items-center ${
+      className={`h-screen w-full flex items-center ${
         right ? "justify-end" : "justify-start"
       } sticky top-0 overflow-hidden`}
     >

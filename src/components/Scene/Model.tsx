@@ -39,6 +39,23 @@ export default function Model() {
         "<",
       );
 
+      // Floating Animation
+      gsap.fromTo(
+        group.current!.position,
+        {
+          y: +0.5,
+        },
+        { y: -0.5, ease: "power1.inOut", duration: 2, repeat: -1, yoyo: true },
+      );
+
+      // Continuous Rotation Animation
+      gsap.to(group.current!.rotation, {
+        y: "+=6.28319", // This equals 2 * Math.PI (a full rotation)
+        ease: "none",
+        duration: 12, // Adjust speed of the rotation here
+        repeat: -1, // Infinite rotation
+      });
+
       // Scroll Animation for Section 1
       gsap
         .timeline({
@@ -49,22 +66,24 @@ export default function Model() {
             scrub: true,
             markers: true,
           },
-          ease: "power2.inOut",
         })
         .to(group.current!.position, {
           x: -10,
+          ease: "back.out(2)",
         })
         .to(
           group.current!.position,
           {
             y: 0,
+            ease: "back.out(2)",
           },
           "<",
         )
         .to(
           group.current!.rotation,
           {
-            y: Math.PI * 3.4,
+            y: "+=6.28319", // Ensure smooth transition during scroll
+            ease: "none",
           },
           "<",
         );
@@ -79,15 +98,16 @@ export default function Model() {
             scrub: true,
             markers: true,
           },
-          ease: "power2.inOut",
         })
         .to(group.current!.position, {
           x: 10, // Move further to the left
+          ease: "back.out(2)",
         })
         .to(
           group.current!.rotation,
           {
-            y: Math.PI / 3.4, // Update rotation for the left movement
+            y: "+=6.28319", // Update rotation smoothly with scroll
+            ease: "none",
           },
           "<",
         );
