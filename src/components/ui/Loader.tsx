@@ -17,7 +17,7 @@ export default function Loader() {
   }, [progress]);
 
   return (
-    <Html>
+    <Html center>
       <div className="relative z-[80]">
         <svg
           className="w-24 h-24 "
