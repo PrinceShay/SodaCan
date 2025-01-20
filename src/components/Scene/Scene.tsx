@@ -37,7 +37,7 @@ export default function Scene() {
         camera={{ position: [0, 0, -25], fov: 60 }}
       >
         <Environment preset="warehouse" />
-        {/* <Lights /> */}
+        <Lights />
         {/* Model und Ladeindikator */}
         <Suspense fallback={<Loader />}>
           <Model />

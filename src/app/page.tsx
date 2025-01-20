@@ -1,4 +1,4 @@
-import Features from "@/components/content/Features/Features";
+import Features from "@/components/content/FeaturesAlt/Features";
 import Hero from "@/components/hero/Hero";
 import LogoGlow from "@/components/LogoGlow";
 import Scene from "@/components/Scene/Scene";

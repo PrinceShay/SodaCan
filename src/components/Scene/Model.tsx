@@ -1,26 +1,37 @@
 import { useGLTF } from "@react-three/drei";
-import { useRef } from "react";
-import { Group } from "three";
+import { useRef, useState, useEffect } from "react";
+import { Group, MeshPhysicalMaterial } from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger); // Correctly register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 useGLTF.preload("/can.glb");
 
 export default function Model() {
-  const group = useRef<Group>(null); // Reference to the group containing the model
-  const { scene } = useGLTF("/can.glb");
+  const group = useRef<Group>(null);
+  const { scene, nodes } = useGLTF("/can.glb"); // Load both meshes
+  const [scale, setScale] = useState(1.0);
 
-  // GSAP animation setup
+  useEffect(() => {
+    // Function to update scale based on device width
+    const updateScale = () => {
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      setScale(isMobile ? 0.8 : 1.0);
+    };
+
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, []);
+
   useGSAP(() => {
     if (group.current) {
-      // Set initial rotation and position
       group.current.rotation.y = Math.PI / 0.675;
       group.current.position.y = -10;
 
-      // Initial intro animation
+      // Intro animation
       const Introtl = gsap.timeline({});
       Introtl.from(group.current!.rotation, {
         y: Math.PI * 3.5,
@@ -48,75 +59,25 @@ export default function Model() {
         { y: -0.5, ease: "power1.inOut", duration: 2, repeat: -1, yoyo: true },
       );
 
-      // Continuous Rotation Animation
-      gsap.to(group.current!.rotation, {
-        y: "+=6.28319", // This equals 2 * Math.PI (a full rotation)
-        ease: "none",
-        duration: 12, // Adjust speed of the rotation here
-        repeat: -1, // Infinite rotation
-      });
-
-      // Scroll Animation for Section 1
       gsap
         .timeline({
           scrollTrigger: {
-            trigger: "#section-1",
-            start: "top bottom",
+            trigger: document.body,
+            start: "top top",
             end: "bottom bottom",
             scrub: true,
-            markers: true,
           },
         })
-        .to(group.current!.position, {
-          x: -10,
-          ease: "back.out(2)",
-        })
-        .to(
-          group.current!.position,
-          {
-            y: 0,
-            ease: "back.out(2)",
-          },
-          "<",
-        )
-        .to(
-          group.current!.rotation,
-          {
-            y: "+=6.28319", // Ensure smooth transition during scroll
-            ease: "none",
-          },
-          "<",
-        );
-
-      // Scroll Animation for Section 2
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: "#section-2",
-            start: "top bottom",
-            end: "bottom bottom",
-            scrub: true,
-            markers: true,
-          },
-        })
-        .to(group.current!.position, {
-          x: 10, // Move further to the left
-          ease: "back.out(2)",
-        })
-        .to(
-          group.current!.rotation,
-          {
-            y: "+=6.28319", // Update rotation smoothly with scroll
-            ease: "none",
-          },
-          "<",
-        );
+        .to(group.current!.rotation, {
+          y: "+=10",
+          ease: "none",
+        });
     }
   });
 
   return (
-    <group ref={group}>
-      <primitive material="red" object={scene} />
+    <group scale={scale} ref={group}>
+      <primitive object={nodes.Top} />
     </group>
   );
 }
