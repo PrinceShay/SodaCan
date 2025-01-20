@@ -20,12 +20,8 @@ export default function UnleashTheBeast() {
     });
   });
   return (
-    <div style={{ perspective: "500px" }} className="w-[90vw] md:w-[65vw]">
-      <svg
-        style={{ perspective: "500px" }}
-        className="fill-white overflow-visible"
-        viewBox="0 0 524.39 273.05"
-      >
+    <div className="w-[90vw] md:w-[65vw]">
+      <svg className="fill-white overflow-visible" viewBox="0 0 524.39 273.05">
         <g className="heroBeast">
           <path
             className="!fill-[#00ff01] heroLetter"

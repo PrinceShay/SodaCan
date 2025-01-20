@@ -30,7 +30,7 @@ function Lights() {
 // Hauptszene
 export default function Scene() {
   return (
-    <div className="fixed w-full h-screen z-20">
+    <div className="fixed w-full h-screen z-20 !pointer-events-none">
       <Canvas
         gl={{ antialias: true }}
         dpr={[1, 2]}

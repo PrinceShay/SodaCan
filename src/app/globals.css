@@ -27,6 +27,14 @@ h6 {
   overflow: hidden;
 }
 
+.heroGradient{
+  background: rgb(12,17,16);
+  background: -moz-radial-gradient(circle, rgba(12,17,16,0) 30%, rgba(12,17,16,1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(12,17,16,0) 30%, rgba(12,17,16,1) 100%);
+  background: radial-gradient(circle, rgba(12,17,16,0) 30%, rgba(12,17,16,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0c1110",endColorstr="#0c1110",GradientType=1);  
+}
+
 
 
 @layer base {

@@ -48,7 +48,7 @@ export default function FeatureItem({
         featureTimeline.from(
           imageRef.current,
           {
-            scale: 1.4,
+            scale: 1.8,
           },
           "<", // Starts at the same time as the feature animation
         );

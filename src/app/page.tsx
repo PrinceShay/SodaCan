@@ -1,3 +1,4 @@
+import Circle from "@/components/content/circle/Circle";
 import Features from "@/components/content/FeaturesAlt/Features";
 import Hero from "@/components/hero/Hero";
 import LogoGlow from "@/components/LogoGlow";
@@ -11,15 +12,7 @@ export default function Home() {
       <div className="js-wrapperHome">
         <Hero />
         <Features />
-        <section
-          id="section-2"
-          className="p-12 flex justify-end items-center min-h-screen"
-        >
-          <h1 className="text-5xl">Hello</h1>
-        </section>
-        <section id="section-3" className="p-12 flex items-center min-h-screen">
-          <h1 className="text-5xl">Hello</h1>
-        </section>
+        <Circle />
       </div>
     </main>
   );

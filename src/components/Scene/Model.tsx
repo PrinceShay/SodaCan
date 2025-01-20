@@ -1,6 +1,6 @@
-import { useGLTF } from "@react-three/drei";
+import { Html, useGLTF } from "@react-three/drei";
 import { useRef, useState, useEffect } from "react";
-import { Group, MeshPhysicalMaterial } from "three";
+import { Group } from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -74,6 +74,57 @@ export default function Model() {
         });
     }
   });
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      if (group.current) {
+        const viewportHeight = window.innerHeight;
+        const mouseY = event.clientY;
+
+        if (mouseY < viewportHeight * 0.3) {
+          // Mouse is in the top 30% of the viewport, animate the can to look up
+          gsap.to(group.current!.rotation, {
+            x: Math.PI / 16,
+            duration: 1, // Animation duration
+            ease: "power2.out",
+          });
+        } else if (mouseY > viewportHeight * 0.7) {
+          // Mouse is in the bottom 30% of the viewport, animate the can to look down
+          gsap.to(group.current!.rotation, {
+            x: -Math.PI / 16,
+            duration: 1,
+            ease: "power2.out",
+          });
+        } else {
+          // Mouse is in the middle 40%, animate to standard position
+          gsap.to(group.current!.rotation, {
+            x: 0,
+            duration: 1,
+            ease: "power2.out",
+          });
+        }
+      }
+    };
+
+    const handleMouseLeave = () => {
+      // Mouse leaves viewport, reset to standard position with animation
+      if (group.current) {
+        gsap.to(group.current!.rotation, {
+          x: 0,
+          duration: 0.6,
+          ease: "power2.out",
+        });
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
 
   return (
     <group scale={scale} ref={group}>

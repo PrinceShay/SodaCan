@@ -50,17 +50,21 @@ export default function FeatureItem({
             scrub: true,
           },
         });
-        tl.from(circleImage.current, {
-          scale: 1.6,
-          opacity: 0,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: circleWrapper.current,
-            start: "top bottom",
-            end: "bottom 50%",
-            scrub: true,
+        tl.from(
+          circleImage.current,
+          {
+            scale: 3,
+            opacity: 0,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: circleWrapper.current,
+              start: "top bottom",
+              end: "bottom 50%",
+              scrub: true,
+            },
           },
-        });
+          "<",
+        );
         tl.fromTo(
           textRef.current,
           {
