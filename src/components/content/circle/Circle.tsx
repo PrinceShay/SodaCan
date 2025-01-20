@@ -25,13 +25,23 @@ export default function Circle() {
   const [radius, setRadius] = useState(0);
 
   useEffect(() => {
-    // Dynamically calculate radius
-    const calculatedRadius = ((3 / 4) * window.innerHeight) / 2;
+    // Dynamically calculate radius with conditional check for mobile
+    const calculateRadius = () => {
+      if (window.innerWidth <= 768) {
+        return ((1 / 2) * window.innerHeight) / 2; // Even smaller radius for mobile
+      } else {
+        return ((3 / 4) * window.innerHeight) / 2; // Default radius for larger screens
+      }
+    };
+
+    const calculatedRadius = calculateRadius();
     setRadius(calculatedRadius);
 
     const handleResize = () => {
-      setRadius(((3 / 4) * window.innerHeight) / 2);
+      const updatedRadius = calculateRadius();
+      setRadius(updatedRadius);
     };
+
     window.addEventListener("resize", handleResize);
 
     return () => {

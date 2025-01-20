@@ -5,7 +5,7 @@ export default function CircleItem({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="circleItem relative ">
       <Image
-        className="relative z-10 "
+        className="relative z-10 w-[20vw] md:w-[7.5vw] "
         src={`/sorten/${src}.webp`}
         alt={alt}
         width={128}
