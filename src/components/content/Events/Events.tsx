@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel } from "swiper/modules";
 import EventItem from "./EventItem";
 
 import "swiper/css";
+import "swiper/css/mousewheel";
 
 export default function Events() {
   const events = [
@@ -67,6 +69,8 @@ export default function Events() {
         spaceBetween={20} // Reduced default space for smaller devices
         slidesPerView={1.2} // Default for smallest screens
         centeredSlides
+        modules={[Mousewheel]}
+        mousewheel={{ forceToAxis: true, sensitivity: 1 }}
         loop
         breakpoints={{
           480: {
