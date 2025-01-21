@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import Hero from "@/components/content/hero/Hero";
 import Scene from "@/components/Scene/Scene";
+import Events from "@/components/content/Events/Events";
 
 const Circle = React.lazy(() => import("@/components/content/circle/Circle"));
 const CTASection = React.lazy(
@@ -24,6 +25,7 @@ export default function Home() {
           <Features />
           <Circle />
           <TextSection />
+          <Events />
           <CTASection />
         </Suspense>
       </div>

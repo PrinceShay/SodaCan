@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Navbar() {
   return (
-    <div className="flex justify-between md:grid grid-cols-3 w-full fixed p-12 z-30">
+    <div className="flex justify-between md:grid grid-cols-3 w-full fixed px-4 py-4 md:p-12 z-30">
       <ul className="hidden md:flex uppercase font-bebasNeue gap-2 text-2xl">
         <li className="hover:text-green-500 transition-colors ease-out">
           Produkte
