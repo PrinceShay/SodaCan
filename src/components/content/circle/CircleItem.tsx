@@ -8,15 +8,8 @@ export default function CircleItem({ src, alt }: { src: string; alt: string }) {
         className="relative z-10 w-[20vw] md:w-[7.5vw] "
         src={`/sorten/${src}.webp`}
         alt={alt}
-        width={128}
-        height={128}
-      />
-      <Image
-        className="absolute top-0 blur-2xl z-0 opacity-60"
-        src={`/sorten/${src}.webp`}
-        alt={alt}
-        width={128}
-        height={128}
+        width={48}
+        height={48}
       />
     </div>
   );

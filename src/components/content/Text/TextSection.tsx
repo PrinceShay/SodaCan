@@ -50,10 +50,10 @@ export default function TextSection() {
   });
 
   return (
-    <section className="flex flex-col w-full h-screen justify-between items-center flex-nowrap  overflow-hidden ">
+    <section className="flex flex-col w-full h-auto md:h-screen justify-between items-center flex-nowrap  overflow-hidden ">
       <div
         ref={l1}
-        className="flex flex-row gap-16 flex-nowrap font-bebasNeue text-[18vw] shrink-0 leading-none"
+        className="flex flex-row gap-16 flex-nowrap font-bebasNeue text-[18vw] md:text-[18vw] shrink-0 leading-none"
       >
         <p>Nachtaktive</p>
         <p>Nachtaktive</p>
@@ -61,7 +61,7 @@ export default function TextSection() {
       </div>
       <div
         ref={l2}
-        className="flex relative z-30 flex-row gap-16 flex-nowrap font-bebasNeue text-[18vw] shrink-0 leading-none"
+        className="flex relative z-30 flex-row gap-16 flex-nowrap font-bebasNeue text-[18vw] md:text-[18vw] shrink-0 leading-none"
       >
         <p>Champions</p>
         <p>Champions</p>
@@ -69,7 +69,7 @@ export default function TextSection() {
       </div>
       <div
         ref={l3}
-        className="flex flex-row gap-16 flex-nowrap font-bebasNeue text-[18vw] shrink-0 leading-none"
+        className="flex flex-row gap-16 flex-nowrap font-bebasNeue text-[18vw] md:text-[18vw] shrink-0 leading-none"
       >
         <p>Adrenalin</p>
         <p>Adrenalin</p>
