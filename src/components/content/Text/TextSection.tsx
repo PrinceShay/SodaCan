@@ -38,15 +38,15 @@ export default function TextSection() {
       },
       { xPercent: -25 },
       "<",
-    ),
-      lines.fromTo(
-        l3.current,
-        {
-          xPercent: -25,
-        },
-        { xPercent: 25 },
-        "<",
-      );
+    );
+    lines.fromTo(
+      l3.current,
+      {
+        xPercent: -25,
+      },
+      { xPercent: 25 },
+      "<",
+    );
   });
 
   return (
