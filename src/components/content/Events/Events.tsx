@@ -53,8 +53,8 @@ export default function Events() {
 
   return (
     <section className="w-full min-h-screen px-0 py-24 md:px-12 relative z-50 overflow-x-clip">
-      <div className="mb-12 md:mb-32 px-6">
-        <h1 className="font-saphifen leading-[0.8] text-[15vw] md:text-[12vw] mb-4 md:mb-16 -rotate-3 md:-rotate-6 text-green-500">
+      <div className="mb-12 md:mb-40 px-6">
+        <h1 className="font-saphifen leading-[0.8] text-[15vw] md:text-[10vw] mb-4 md:mb-16 -rotate-3 md:-rotate-6 text-green-500">
           Erlebe Monster
           <br /> Energy hautnah
         </h1>
