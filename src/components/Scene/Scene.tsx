@@ -11,7 +11,6 @@ import {
   Backdrop,
   Environment,
 } from "@react-three/drei";
-import Loader from "../ui/Loader";
 
 // Loader-Komponente für den Ladefortschritt
 
@@ -27,6 +26,11 @@ function Lights() {
   );
 }
 
+function Loader() {
+  const { active, progress, errors, item, loaded, total } = useProgress();
+  return <Html center>{progress} % loaded</Html>;
+}
+
 // Hauptszene
 export default function Scene() {
   return (
@@ -38,7 +42,6 @@ export default function Scene() {
       >
         <Environment preset="warehouse" />
         <Lights />
-        {/* Model und Ladeindikator */}
         <Suspense fallback={<Loader />}>
           <Model />
         </Suspense>

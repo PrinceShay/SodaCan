@@ -69,7 +69,7 @@ export default function Model() {
           },
         })
         .to(group.current!.rotation, {
-          y: "+=10",
+          y: Math.PI * 4,
           ease: "none",
         });
     }

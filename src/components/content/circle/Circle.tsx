@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Circle() {
   const itemsContainer = useRef(null);
-  const itemsWrapper = useRef(null);
+  const itemsWrapper = useRef<HTMLDivElement>(null);
 
   const products = [
     { src: "1f3f1d80-2eec-40db-b221-333b24202c8d", alt: "Sugar Free" },
@@ -98,6 +98,24 @@ export default function Circle() {
           scrub: true,
         },
       });
+
+      gsap.to(".circleItem", {
+        scale: 0,
+        rotateZ: -30,
+        stagger: 0.06,
+        scrollTrigger: {
+          trigger: itemsWrapper.current, // Die gesamte Section als Trigger
+          start: () => {
+            if (itemsWrapper.current) {
+              return `top+=${itemsWrapper.current.offsetHeight - window.innerHeight}px`;
+            }
+            return "top+=0px"; // Fallback value
+          }, // Startet, wenn die letzten 100vh der Section erreicht werden
+          end: "bottom top", // Animation endet, wenn die Section vollständig aus dem Viewport heraus ist
+          scrub: true,
+          markers: true, // Marker für Debugging
+        },
+      });
     }
   });
 
@@ -105,7 +123,7 @@ export default function Circle() {
     <section ref={itemsWrapper} className="h-[400vh] relative">
       <div
         ref={itemsContainer}
-        className="sticky top-0 h-screen overflow-hidden"
+        className="sticky top-0 h-screen overflow-x-clip"
       >
         <div className="circle-container absolute inset-0 flex justify-center items-center">
           {products.map((product, index) => (

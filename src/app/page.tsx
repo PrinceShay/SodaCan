@@ -1,18 +1,31 @@
-import Circle from "@/components/content/circle/Circle";
-import Features from "@/components/content/FeaturesAlt/Features";
-import Hero from "@/components/hero/Hero";
-import LogoGlow from "@/components/LogoGlow";
+import React, { Suspense } from "react";
+import Hero from "@/components/content/hero/Hero";
 import Scene from "@/components/Scene/Scene";
-import { Scroll } from "@react-three/drei";
+
+const Circle = React.lazy(() => import("@/components/content/circle/Circle"));
+const CTASection = React.lazy(
+  () => import("@/components/content/CTA/CTASection"),
+);
+const Features = React.lazy(
+  () => import("@/components/content/FeaturesAlt/Features"),
+);
+const TextSection = React.lazy(
+  () => import("@/components/content/Text/TextSection"),
+);
 
 export default function Home() {
   return (
     <main>
+      {/* <Preloader /> */}
       <Scene />
       <div className="js-wrapperHome">
         <Hero />
-        <Features />
-        <Circle />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Features />
+          <Circle />
+          <TextSection />
+          <CTASection />
+        </Suspense>
       </div>
     </main>
   );
