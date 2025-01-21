@@ -113,7 +113,6 @@ export default function Circle() {
           }, // Startet, wenn die letzten 100vh der Section erreicht werden
           end: "bottom top", // Animation endet, wenn die Section vollständig aus dem Viewport heraus ist
           scrub: true,
-          markers: true, // Marker für Debugging
         },
       });
     }
