@@ -31,13 +31,15 @@ export default function EventItem({
       </h1>
       <div className="aspect-[4/6] md:aspect-[4/5] h-full overflow-clip group-hover:scale-95 transition-transform ease-out duration-300 rounded-md relative">
         {!active ? (
-          <div className="w-full p-4 absolute z-20 bg-white bg-opacity-20 text-center font-bebasNeue text-xl top-1/3">
+          <div className="w-full p-4 absolute z-20 bg-white bg-opacity-20 text-center font-bebasNeue text-xl lg:text-2xl top-1/3">
             Dieses Event ist leider schon vorbei
           </div>
         ) : null}
         <div className="w-full h-full relative z-10 p-8 flex flex-col justify-end items-start bg-gradient-to-t from-black to-transparent">
           <div className="mb-8 flex flex-col items-start">
-            <p className="text-3xl font-bebasNeue mb-2">{description}</p>
+            <p className="text-3xl xl:text-5xl font-bebasNeue mb-2">
+              {description}
+            </p>
             <div className="text-xl font-bebasNeue text-green-500 p-2 backdrop-blur-sm flex flex-row items-center justify-start gap-2">
               <p>{date}</p>
               <div className="h-4 w-[2px] bg-white"></div>
