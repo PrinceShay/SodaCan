@@ -72,6 +72,31 @@ export default function Model() {
           ease: "none",
           overwrite: "auto",
         });
+
+      const CTAanim = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".cta_section",
+          start: "top bottom",
+          end: "bottom center",
+          markers: true,
+          scrub: true,
+        },
+      });
+
+      CTAanim.to(group.current.scale, {
+        x: -0.1,
+        y: -0.1,
+        z: -0.1,
+      });
+
+      CTAanim.to(
+        group.current.rotation,
+        {
+          x: 0.5,
+          overwrite: "auto",
+        },
+        "<",
+      );
     }
   });
 

@@ -116,7 +116,7 @@ export default function Events() {
           each: 0.2,
           from: "start",
         },
-        duration: 1.5,
+        duration: 1,
         ease: "power4.out",
         scrollTrigger: {
           trigger: ".event-swiper",
