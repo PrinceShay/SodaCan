@@ -1,24 +1,31 @@
 "use client";
 import { useGSAP } from "@gsap/react";
+import { useProgress } from "@react-three/drei";
 import gsap from "gsap";
 import React from "react";
 
 export default function UnleashTheBeast() {
-  useGSAP(() => {
-    gsap.set(".heroLetter", {
-      transformOrigin: "center",
-      transformStyle: "preserve-3d",
-    });
+  const { progress } = useProgress(); // Fortschrittswert des Ladeprozesses
 
-    const hero = gsap.timeline();
-    hero.from(".heroLetter", {
-      y: gsap.utils.random(-100, 0, true),
-      scale: 1.5,
-      ease: "power4.out",
-      opacity: 0,
-      stagger: { each: 0.05, from: "center", grid: "auto" },
-    });
-  });
+  useGSAP(
+    () => {
+      gsap.set(".heroLetter", {
+        transformOrigin: "center",
+        transformStyle: "preserve-3d",
+      });
+      if (progress === 100) {
+        const hero = gsap.timeline({ delay: 0.5 });
+        hero.from(".heroLetter", {
+          y: gsap.utils.random(-100, 0, true),
+          scale: 1.5,
+          ease: "power4.out",
+          opacity: 0,
+          stagger: { each: 0.05, from: "center", grid: "auto" },
+        });
+      }
+    },
+    { dependencies: [progress] },
+  );
   return (
     <div className="w-[90vw] md:w-[65vw]">
       <svg className="fill-white overflow-visible" viewBox="0 0 524.39 273.05">

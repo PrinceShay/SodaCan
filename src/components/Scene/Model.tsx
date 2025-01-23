@@ -29,23 +29,22 @@ export default function Model() {
   useGSAP(() => {
     if (group.current) {
       group.current.rotation.y = Math.PI / 0.675;
-      group.current.position.y = -10;
-
       // Intro animation
-      const Introtl = gsap.timeline({});
+      const Introtl = gsap.timeline({ delay: 0.2 });
       Introtl.from(group.current!.rotation, {
         y: Math.PI * 3.5,
         x: Math.PI * 0.8,
-        duration: 4,
+        duration: 2,
         ease: "elastic.out(1,0.8)",
       });
 
       Introtl.from(
         group.current!.position,
         {
-          y: -30,
+          y: 30,
           duration: 4,
           ease: "elastic.out(1,0.8)",
+          overwrite: "auto",
         },
         "<",
       );
@@ -71,6 +70,7 @@ export default function Model() {
         .to(group.current!.rotation, {
           y: Math.PI * 4,
           ease: "none",
+          overwrite: "auto",
         });
     }
   });
