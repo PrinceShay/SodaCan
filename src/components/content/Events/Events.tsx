@@ -119,6 +119,7 @@ export default function Events() {
         },
         duration: 1.5,
         ease: "power4.out",
+        clearProps: "all", // Add this line to clear GSAP properties after animation
         scrollTrigger: {
           trigger: ".event-swiper",
           start: "top bottom",
