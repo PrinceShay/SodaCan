@@ -108,67 +108,6 @@ export default function Events() {
 
   useGSAP(
     () => {
-      // Batch animate all event items
-      gsap.from(".event-wrapper", {
-        scale: 0.8,
-        opacity: 0,
-        yPercent: 25,
-        stagger: {
-          each: 0.2,
-          from: "start",
-        },
-        duration: 1.5,
-        ease: "power4.out",
-        clearProps: "all", // Add this line to clear GSAP properties after animation
-        scrollTrigger: {
-          trigger: ".event-swiper",
-          start: "top bottom",
-          end: "bottom center",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      // Animate images with slight delay
-      gsap.from(".event-image", {
-        scale: 1.5,
-        opacity: 0,
-        stagger: {
-          each: 0.2,
-          from: "start",
-        },
-        duration: 2,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: ".event-swiper",
-          start: "top bottom",
-          end: "bottom center",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      // Animate headlines with slight delay
-      gsap.from(".event-headline", {
-        opacity: 0,
-        yPercent: 50,
-        stagger: {
-          each: 0.2,
-          from: "start",
-        },
-        duration: 1.5,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: ".event-swiper",
-          start: "top bottom",
-          end: "bottom center",
-          toggleActions: "play none none reverse",
-        },
-      });
-    },
-    { scope: eventSection },
-  );
-
-  useGSAP(
-    () => {
       gsap.from(".swiper-slide", {
         yPercent: 66,
         opacity: 0,
