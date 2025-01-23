@@ -167,6 +167,29 @@ export default function Events() {
     { scope: eventSection },
   );
 
+  useGSAP(
+    () => {
+      gsap.from(".swiper-slide", {
+        yPercent: 66,
+        opacity: 0,
+        filter: "blur(30px)",
+        stagger: {
+          each: 0.2,
+          from: "start",
+        },
+        duration: 1.5,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".event-swiper",
+          start: "top bottom",
+          end: "bottom center",
+          toggleActions: "play none none reverse",
+        },
+      });
+    },
+    { scope: eventSection },
+  );
+
   return (
     <section
       ref={eventSection}
