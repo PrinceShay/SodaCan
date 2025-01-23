@@ -26,10 +26,10 @@ export default function EventItem({
 }: EventItemProps) {
   return (
     <Link className="relative group h-full" href={href}>
-      <h1 className="font-saphifen text-[16vw] md:text-[7vw] absolute -top-7 text-green-500 z-20 leading-[0.75] text-nowrap rotate-[-7deg]">
+      <h1 className="event-headline font-saphifen text-[16vw] md:text-[7vw] absolute -top-7 text-green-500 z-20 leading-[0.75] text-nowrap rotate-[-7deg]">
         {title}
       </h1>
-      <div className="aspect-[4/6] md:aspect-[4/5] h-full overflow-clip group-hover:scale-95 transition-transform ease-out duration-300 rounded-md relative">
+      <div className="event-wrapper aspect-[4/6] md:aspect-[4/5] h-full overflow-clip group-hover:scale-95 transition-transform ease-out duration-300 rounded-md relative">
         {!active ? (
           <div className="w-full p-4 absolute z-20 bg-white bg-opacity-20 text-center font-bebasNeue text-xl lg:text-2xl top-1/3">
             Dieses Event ist leider schon vorbei
@@ -60,7 +60,7 @@ export default function EventItem({
           src={imageSrc}
           fill
           sizes="33vw"
-          className={`object-cover group-hover:scale-125 transition-transform ease-out duration-300 ${!active ? "saturate-0" : ""}`}
+          className={`event-image object-cover group-hover:scale-125 transition-transform ease-out duration-300 ${!active ? "saturate-0" : ""}`}
         />
       </div>
     </Link>

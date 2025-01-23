@@ -1,13 +1,24 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel } from "swiper/modules";
 import EventItem from "./EventItem";
+import SplitType from "split-type";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "swiper/css";
 import "swiper/css/mousewheel";
 
 export default function Events() {
+  const eventSection = useRef(null);
+  const eventHeadline = useRef<HTMLHeadingElement>(null);
+  const eventText = useRef<HTMLParagraphElement>(null);
+  const eventItem = useRef();
+
+  gsap.registerPlugin(ScrollTrigger);
+
   const events = [
     {
       title: "Moto Madness",
@@ -53,19 +64,127 @@ export default function Events() {
     },
   ];
 
+  useGSAP(
+    () => {
+      if (eventHeadline.current && eventText.current) {
+        // Split headline
+        const headline = SplitType.create(eventHeadline.current, {
+          types: "words,chars",
+        });
+
+        // Split paragraph - fix the target element
+        const paragraph = SplitType.create(eventText.current, {
+          types: "words,chars",
+        });
+
+        // Animate headline
+        gsap.from(eventHeadline.current.querySelectorAll(".char"), {
+          opacity: 0,
+          stagger: 0.03,
+          duration: 2,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: eventHeadline.current,
+            start: "top 90%",
+          },
+        });
+
+        // Animate paragraph
+        gsap.from(eventText.current.querySelectorAll(".char"), {
+          opacity: 0,
+          stagger: { each: 0.02, from: "random" },
+          duration: 0.6,
+          color: "green",
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: eventText.current,
+            start: "top bottom",
+          },
+        });
+      }
+    },
+    { scope: eventSection, dependencies: [eventHeadline, eventText] },
+  );
+
+  useGSAP(
+    () => {
+      // Batch animate all event items
+      gsap.from(".event-wrapper", {
+        scale: 0.8,
+        opacity: 0,
+        yPercent: 25,
+        stagger: {
+          each: 0.2,
+          from: "start",
+        },
+        duration: 1.5,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".event-swiper",
+          start: "top bottom",
+          end: "bottom center",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Animate images with slight delay
+      gsap.from(".event-image", {
+        scale: 1.5,
+        opacity: 0,
+        stagger: {
+          each: 0.2,
+          from: "start",
+        },
+        duration: 2,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".event-swiper",
+          start: "top bottom",
+          end: "bottom center",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Animate headlines with slight delay
+      gsap.from(".event-headline", {
+        opacity: 0,
+        yPercent: 50,
+        stagger: {
+          each: 0.2,
+          from: "start",
+        },
+        duration: 1.5,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".event-swiper",
+          start: "top bottom",
+          end: "bottom center",
+          toggleActions: "play none none reverse",
+        },
+      });
+    },
+    { scope: eventSection },
+  );
+
   return (
-    <section className="w-full min-h-screen px-0 py-24 md:px-12 relative z-50 overflow-x-clip">
+    <section
+      ref={eventSection}
+      className="w-full min-h-screen px-0 py-24 md:px-12 relative z-50 overflow-x-clip"
+    >
       <div className="mb-24 md:mb-64 px-6 text-center">
-        <h1 className="font-saphifen leading-[0.8] text-[15vw] md:text-[10vw] mb-4 md:mb-16 xl:mb-32 -rotate-3 md:-rotate-6 text-green-500">
+        <h1
+          ref={eventHeadline}
+          className="font-saphifen leading-[0.8] text-[15vw] md:text-[10vw] mb-4 md:mb-16 xl:mb-32 -rotate-3 md:-rotate-6 text-green-500"
+        >
           Erlebe Monster
           <br /> Energy hautnah
         </h1>
-        <p className="text-3xl md:text-5xl font-bebasNeue">
+        <p ref={eventText} className="text-3xl md:text-5xl font-bebasNeue">
           sei bei unseren exklusiven Events dabei.
         </p>
       </div>
       <Swiper
-        className="!overflow-visible"
+        className="!overflow-visible event-swiper"
         spaceBetween={20} // Reduced default space for smaller devices
         slidesPerView={1.2} // Default for smallest screens
         centeredSlides
