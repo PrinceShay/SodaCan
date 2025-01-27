@@ -68,7 +68,7 @@ export default function Model() {
           },
         })
         .to(group.current!.rotation, {
-          y: Math.PI * 4,
+          y: Math.PI * 5,
           ease: "none",
           overwrite: "auto",
         });
@@ -78,7 +78,6 @@ export default function Model() {
           trigger: ".cta_section",
           start: "top bottom",
           end: "bottom center",
-          markers: true,
           scrub: true,
         },
       });
@@ -87,6 +86,7 @@ export default function Model() {
         x: -0.1,
         y: -0.1,
         z: -0.1,
+        overwrite: "auto",
       });
 
       CTAanim.to(
@@ -100,7 +100,7 @@ export default function Model() {
     }
   });
 
-  useEffect(() => {
+  useGSAP(() => {
     const handleMouseMove = (event: MouseEvent) => {
       if (group.current) {
         const viewportHeight = window.innerHeight;
@@ -109,23 +109,20 @@ export default function Model() {
         if (mouseY < viewportHeight * 0.3) {
           // Mouse is in the top 30% of the viewport, animate the can to look up
           gsap.to(group.current!.rotation, {
-            x: Math.PI / 16,
+            x: Math.PI / 20,
             duration: 1, // Animation duration
-            ease: "power2.out",
           });
         } else if (mouseY > viewportHeight * 0.7) {
           // Mouse is in the bottom 30% of the viewport, animate the can to look down
           gsap.to(group.current!.rotation, {
-            x: -Math.PI / 16,
+            x: -Math.PI / 20,
             duration: 1,
-            ease: "power2.out",
           });
         } else {
           // Mouse is in the middle 40%, animate to standard position
           gsap.to(group.current!.rotation, {
             x: 0,
             duration: 1,
-            ease: "power2.out",
           });
         }
       }

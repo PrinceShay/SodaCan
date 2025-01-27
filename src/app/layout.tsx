@@ -3,11 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Lenis } from "../components/functions/Lenis";
 import GrainBackground from "@/components/functions/GrainBackground";
-import { Toaster } from "@/components/ui/toaster";
-import { Analytics } from "@vercel/analytics/next";
-import FloatingCTA from "@/components/ui/FloatingCTA";
 import Navbar from "@/components/ui/Navbar";
-import Loader from "@/components/ui/Loader";
 
 export const metadata: Metadata = {
   title: "Unleash the Beast | MONSTER Energy",
@@ -40,7 +36,6 @@ export default function RootLayout({
         <GrainBackground />
         <Navbar />
         <Lenis>{children}</Lenis>
-        <FloatingCTA />
       </body>
     </html>
   );

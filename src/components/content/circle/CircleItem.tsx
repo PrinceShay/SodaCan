@@ -8,8 +8,8 @@ export default function CircleItem({ src, alt }: { src: string; alt: string }) {
         className="relative z-10 w-[20vw] md:w-[7.5vw] "
         src={`/sorten/${src}.webp`}
         alt={alt}
-        width={48}
-        height={48}
+        width={64}
+        height={64}
       />
     </div>
   );
