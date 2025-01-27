@@ -6,7 +6,7 @@ import gsap from "gsap";
 
 export default function FloatingCTA() {
   const ctaRef = useRef(null);
-  let lastScrollY = useRef(0);
+  const lastScrollY = useRef(0);
 
   useGSAP(() => {
     const cta = ctaRef.current;

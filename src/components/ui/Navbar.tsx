@@ -14,7 +14,7 @@ export default function Navbar() {
 
   const { progress } = useProgress();
 
-  let lastScrollY = useRef(0);
+  const lastScrollY = useRef(0);
 
   useGSAP(() => {
     const navbar = navbarRef.current;
